@@ -210,6 +210,11 @@
             this.rdbCauHoi.Location = new System.Drawing.Point(2, 405);
             this.rdbCauHoi.MenuManager = this.barManager1;
             this.rdbCauHoi.Name = "rdbCauHoi";
+            this.rdbCauHoi.Properties.Appearance.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.rdbCauHoi.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 11F);
+            this.rdbCauHoi.Properties.Appearance.Options.UseBackColor = true;
+            this.rdbCauHoi.Properties.Appearance.Options.UseFont = true;
+            this.rdbCauHoi.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.HotFlat;
             this.rdbCauHoi.Size = new System.Drawing.Size(1274, 65);
             this.rdbCauHoi.TabIndex = 2;
             this.rdbCauHoi.SelectedIndexChanged += new System.EventHandler(this.rdbCauHoi_SelectedIndexChanged);
@@ -221,6 +226,11 @@
             this.rdbDapAn.Location = new System.Drawing.Point(5, 260);
             this.rdbDapAn.MenuManager = this.barManager1;
             this.rdbDapAn.Name = "rdbDapAn";
+            this.rdbDapAn.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.rdbDapAn.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.rdbDapAn.Properties.Appearance.Options.UseBackColor = true;
+            this.rdbDapAn.Properties.Appearance.Options.UseFont = true;
+            this.rdbDapAn.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.rdbDapAn.Size = new System.Drawing.Size(1268, 139);
             this.rdbDapAn.TabIndex = 1;
             this.rdbDapAn.SelectedIndexChanged += new System.EventHandler(this.rdbDapAn_SelectedIndexChanged);
@@ -230,9 +240,10 @@
             this.lblCauHoi.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCauHoi.AutoSize = true;
+            this.lblCauHoi.Font = new System.Drawing.Font("Tahoma", 12F);
             this.lblCauHoi.Location = new System.Drawing.Point(12, 43);
             this.lblCauHoi.Name = "lblCauHoi";
-            this.lblCauHoi.Size = new System.Drawing.Size(49, 17);
+            this.lblCauHoi.Size = new System.Drawing.Size(68, 24);
             this.lblCauHoi.TabIndex = 0;
             this.lblCauHoi.Text = "Câu 1:";
             // 
@@ -345,6 +356,7 @@
             this.Name = "frmThi";
             this.Text = "Thi";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmThi_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcNoiDung)).EndInit();
             this.gcNoiDung.ResumeLayout(false);

@@ -29,7 +29,7 @@ namespace THITRACNGHIEM
             InitializeComponent();
 
             setThoiGian();
-
+            this.ControlBox = false;
             DataTable dt = new DataTable();
             try
             {
@@ -303,6 +303,10 @@ namespace THITRACNGHIEM
                 return;
             }
             tbcMain.SelectedIndex = 1;
+        }
+
+        private void frmThi_FormClosing(object sender, FormClosingEventArgs e)
+        {
         }
     }
 }

@@ -246,6 +246,7 @@ namespace THITRACNGHIEM
                     gc_GVDK.Enabled = true;
                     btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
                     btnGhi.Enabled = btnHuy.Enabled = false;
+                    btnThoat.Enabled = btnRefresh.Enabled = true;
                     /*isSua = false;*/
                 }
 
@@ -334,6 +335,8 @@ namespace THITRACNGHIEM
             grcInFor.Enabled = false;
             btnThem.Enabled = btnSua.Enabled = btnXoa.Enabled = true;
             btnGhi.Enabled = btnHuy.Enabled = false;
+            btnThoat.Enabled = btnRefresh.Enabled = true;
+            gc_GVDK.Enabled = true;
             /*isSua = false;*/
         }
 
