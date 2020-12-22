@@ -123,6 +123,11 @@ namespace THITRACNGHIEM
                 return ex.State; // trang thai lỗi gởi từ RAISERROR trong SQL Server qua
             }
         }
+        public static string FormatDate(string date)
+        {
+            string[] t = date.Split('/');
+            return t[1] + "/" + t[0] + "/" + t[2];
+        }
 
         [STAThread]
         static void Main()

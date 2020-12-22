@@ -34,6 +34,9 @@
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptDSDKThi));
+            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery2 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter3 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter4 = new DevExpress.DataAccess.Sql.QueryParameter();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
             this.DetailData1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -47,6 +50,7 @@
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
             this.lblNgay = new DevExpress.XtraReports.UI.XRLabel();
+            this.lblCoSo = new DevExpress.XtraReports.UI.XRLabel();
             this.label1 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
             this.table1 = new DevExpress.XtraReports.UI.XRTable();
@@ -70,8 +74,8 @@
             this.tableCell11 = new DevExpress.XtraReports.UI.XRTableCell();
             this.tableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.lblCoSo = new DevExpress.XtraReports.UI.XRLabel();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
+            this.sqlDataSource2 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.table1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -194,6 +198,15 @@
             this.lblNgay.StyleName = "Title";
             this.lblNgay.StylePriority.UseTextAlignment = false;
             this.lblNgay.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // lblCoSo
+            // 
+            this.lblCoSo.LocationFloat = new DevExpress.Utils.PointFloat(600.6667F, 10F);
+            this.lblCoSo.Name = "lblCoSo";
+            this.lblCoSo.SizeF = new System.Drawing.SizeF(97.33337F, 24.19433F);
+            this.lblCoSo.StyleName = "Title";
+            this.lblCoSo.StylePriority.UseTextAlignment = false;
+            this.lblCoSo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // label1
             // 
@@ -537,15 +550,6 @@
             this.xrTableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell4.Weight = 0.19994134753211973D;
             // 
-            // lblCoSo
-            // 
-            this.lblCoSo.LocationFloat = new DevExpress.Utils.PointFloat(600.6667F, 10F);
-            this.lblCoSo.Name = "lblCoSo";
-            this.lblCoSo.SizeF = new System.Drawing.SizeF(97.33337F, 24.19433F);
-            this.lblCoSo.StyleName = "Title";
-            this.lblCoSo.StylePriority.UseTextAlignment = false;
-            this.lblCoSo.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
             // sqlDataSource1
             // 
             this.sqlDataSource1.ConnectionName = "TN_CSDLPTConnectionString";
@@ -564,6 +568,24 @@
             storedProcQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
+            // sqlDataSource2
+            // 
+            this.sqlDataSource2.ConnectionName = "TN_CSDLPTConnectionString";
+            this.sqlDataSource2.Name = "sqlDataSource2";
+            storedProcQuery2.Name = "SP_DSDKThi";
+            queryParameter3.Name = "@NGAY1";
+            queryParameter3.Type = typeof(System.DateTime);
+            queryParameter3.ValueInfo = "2020-12-01";
+            queryParameter4.Name = "@NGAY2";
+            queryParameter4.Type = typeof(System.DateTime);
+            queryParameter4.ValueInfo = "2020-12-21";
+            storedProcQuery2.Parameters.Add(queryParameter3);
+            storedProcQuery2.Parameters.Add(queryParameter4);
+            storedProcQuery2.StoredProcName = "SP_DSDKThi";
+            this.sqlDataSource2.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
+            storedProcQuery2});
+            this.sqlDataSource2.ResultSchemaSerializable = resources.GetString("sqlDataSource2.ResultSchemaSerializable");
+            // 
             // rptDSDKThi
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -573,9 +595,10 @@
             this.GroupHeader1,
             this.Detail});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
-            this.sqlDataSource1});
+            this.sqlDataSource1,
+            this.sqlDataSource2});
             this.DataMember = "SP_DSDKThi";
-            this.DataSource = this.sqlDataSource1;
+            this.DataSource = this.sqlDataSource2;
             this.Font = new System.Drawing.Font("Arial", 9.75F);
             this.Landscape = true;
             this.PageHeight = 827;
@@ -633,5 +656,6 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel1;
         public DevExpress.XtraReports.UI.XRLabel lblCoSo;
         private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource1;
+        private DevExpress.DataAccess.Sql.SqlDataSource sqlDataSource2;
     }
 }

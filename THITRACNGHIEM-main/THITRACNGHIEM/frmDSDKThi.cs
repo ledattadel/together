@@ -18,17 +18,11 @@ namespace THITRACNGHIEM
             InitializeComponent();
         }
 
-        private string FormatDate(string date)
-        {
-            string[] t = date.Split('/');
-            return t[1] + "/" + t[0] + "/" + t[2];
-        }
-
         private void btnPreview_Click(object sender, EventArgs e)
         {
             rptDSDKThi rpt = new rptDSDKThi(dptNgay1.Text.Trim(), dptNgay2.Text.Trim());
             rpt.lblCoSo.Text = ((DataRowView)Program.bds_dspm[Program.mCoso])["TEN_COSO"].ToString();
-            rpt.lblNgay.Text = "TỪ NGÀY " + FormatDate(dptNgay1.Text.Trim()) + " ĐẾN NGÀY " + FormatDate(dptNgay2.Text.Trim());
+            rpt.lblNgay.Text = "TỪ NGÀY " + Program.FormatDate(dptNgay1.Text.Trim()) + " ĐẾN NGÀY " + Program.FormatDate(dptNgay2.Text.Trim());
 
             ReportPrintTool print = new ReportPrintTool(rpt);
             print.ShowPreviewDialog();

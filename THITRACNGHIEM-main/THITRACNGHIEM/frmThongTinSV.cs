@@ -17,7 +17,7 @@ namespace THITRACNGHIEM
             InitializeComponent();
             lblMSV.Text = Program.username;
             lblHo.Text = Program.mHoten;
-            lblNgaySinh.Text = Program.ngaySinhSV;
+            lblNgaySinh.Text = Program.FormatDate(Program.ngaySinhSV);
             lblDiaChi.Text = Program.diaChiSV;
             lblMaLop.Text = Program.maLopSV;
         }
