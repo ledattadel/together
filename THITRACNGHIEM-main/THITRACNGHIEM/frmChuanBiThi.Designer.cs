@@ -42,7 +42,6 @@
             this.bar1 = new DevExpress.XtraBars.Bar();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnGhi = new DevExpress.XtraBars.BarButtonItem();
             this.btnRefresh = new DevExpress.XtraBars.BarButtonItem();
@@ -53,6 +52,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
             this.grcCoSo = new DevExpress.XtraEditors.GroupControl();
             this.cmbCoSo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -60,7 +60,7 @@
             this.bdsGV_DK = new System.Windows.Forms.BindingSource(this.components);
             this.gIAOVIEN_DANGKYTableAdapter = new THITRACNGHIEM.DSTableAdapters.GIAOVIEN_DANGKYTableAdapter();
             this.tableAdapterManager = new THITRACNGHIEM.DSTableAdapters.TableAdapterManager();
-            this.gIAOVIEN_DANGKYGridControl = new DevExpress.XtraGrid.GridControl();
+            this.gc_GVDK = new DevExpress.XtraGrid.GridControl();
             this.gvGV_DK = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMAGV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMAMH = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -94,7 +94,7 @@
             this.grcCoSo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsGV_DK)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gIAOVIEN_DANGKYGridControl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_GVDK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvGV_DK)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.grcInFor)).BeginInit();
             this.grcInFor.SuspendLayout();
@@ -218,7 +218,6 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnThem),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnSua),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnXoa),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnGhi),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnRefresh),
@@ -236,15 +235,6 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Caption = "Sửa";
-            this.btnSua.Id = 1;
-            this.btnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
-            this.btnSua.Name = "btnSua";
-            this.btnSua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
             // 
             // btnXoa
             // 
@@ -335,6 +325,14 @@
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 515);
             // 
+            // btnSua
+            // 
+            this.btnSua.Caption = "Sửa";
+            this.btnSua.Id = 1;
+            this.btnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
+            this.btnSua.Name = "btnSua";
+            this.btnSua.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // grcCoSo
             // 
             this.grcCoSo.Controls.Add(this.cmbCoSo);
@@ -394,17 +392,17 @@
             this.tableAdapterManager.SINHVIENTableAdapter = null;
             this.tableAdapterManager.UpdateOrder = THITRACNGHIEM.DSTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
             // 
-            // gIAOVIEN_DANGKYGridControl
+            // gc_GVDK
             // 
-            this.gIAOVIEN_DANGKYGridControl.DataSource = this.bdsGV_DK;
-            this.gIAOVIEN_DANGKYGridControl.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gIAOVIEN_DANGKYGridControl.Location = new System.Drawing.Point(0, 128);
-            this.gIAOVIEN_DANGKYGridControl.MainView = this.gvGV_DK;
-            this.gIAOVIEN_DANGKYGridControl.MenuManager = this.barManager1;
-            this.gIAOVIEN_DANGKYGridControl.Name = "gIAOVIEN_DANGKYGridControl";
-            this.gIAOVIEN_DANGKYGridControl.Size = new System.Drawing.Size(1228, 252);
-            this.gIAOVIEN_DANGKYGridControl.TabIndex = 6;
-            this.gIAOVIEN_DANGKYGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gc_GVDK.DataSource = this.bdsGV_DK;
+            this.gc_GVDK.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gc_GVDK.Location = new System.Drawing.Point(0, 128);
+            this.gc_GVDK.MainView = this.gvGV_DK;
+            this.gc_GVDK.MenuManager = this.barManager1;
+            this.gc_GVDK.Name = "gc_GVDK";
+            this.gc_GVDK.Size = new System.Drawing.Size(1228, 252);
+            this.gc_GVDK.TabIndex = 6;
+            this.gc_GVDK.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvGV_DK});
             // 
             // gvGV_DK
@@ -418,7 +416,7 @@
             this.colLAN,
             this.colSOCAUTHI,
             this.colTHOIGIAN});
-            this.gvGV_DK.GridControl = this.gIAOVIEN_DANGKYGridControl;
+            this.gvGV_DK.GridControl = this.gc_GVDK;
             this.gvGV_DK.Name = "gvGV_DK";
             // 
             // colMAGV
@@ -545,7 +543,6 @@
             this.cmbLan.Name = "cmbLan";
             this.cmbLan.Size = new System.Drawing.Size(121, 24);
             this.cmbLan.TabIndex = 19;
-            this.cmbLan.SelectedIndexChanged += new System.EventHandler(this.cmbLan_SelectedIndexChanged);
             // 
             // cmbTrinhDo
             // 
@@ -556,7 +553,6 @@
             this.cmbTrinhDo.Name = "cmbTrinhDo";
             this.cmbTrinhDo.Size = new System.Drawing.Size(125, 24);
             this.cmbTrinhDo.TabIndex = 18;
-            this.cmbTrinhDo.SelectedIndexChanged += new System.EventHandler(this.cmbTrinhDo_SelectedIndexChanged);
             // 
             // btnChonLop
             // 
@@ -662,7 +658,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1228, 586);
             this.Controls.Add(this.grcInFor);
-            this.Controls.Add(this.gIAOVIEN_DANGKYGridControl);
+            this.Controls.Add(this.gc_GVDK);
             this.Controls.Add(this.grcCoSo);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
@@ -677,7 +673,7 @@
             this.grcCoSo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dS)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bdsGV_DK)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gIAOVIEN_DANGKYGridControl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gc_GVDK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvGV_DK)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.grcInFor)).EndInit();
             this.grcInFor.ResumeLayout(false);
@@ -716,7 +712,7 @@
         private DS dS;
         private DSTableAdapters.GIAOVIEN_DANGKYTableAdapter gIAOVIEN_DANGKYTableAdapter;
         private DSTableAdapters.TableAdapterManager tableAdapterManager;
-        private DevExpress.XtraGrid.GridControl gIAOVIEN_DANGKYGridControl;
+        private DevExpress.XtraGrid.GridControl gc_GVDK;
         private DevExpress.XtraGrid.Views.Grid.GridView gvGV_DK;
         private DevExpress.XtraEditors.GroupControl grcInFor;
         private DevExpress.XtraGrid.Columns.GridColumn colMAGV;
@@ -732,12 +728,12 @@
         private DevExpress.XtraEditors.SpinEdit spinThoiGian;
         private DevExpress.XtraEditors.SpinEdit spinSoCau;
         private DevExpress.XtraEditors.DateEdit dptNgayThi;
-        private DevExpress.XtraEditors.TextEdit txtMaLop;
-        private DevExpress.XtraEditors.TextEdit txtMaMH;
         private DevExpress.XtraEditors.TextEdit txtMaGV;
         private System.Windows.Forms.ComboBox cmbTrinhDo;
         private DevExpress.XtraBars.BarButtonItem btnGhi;
         private System.Windows.Forms.ComboBox cmbLan;
         private DevExpress.XtraBars.BarButtonItem btnRefresh;
+        public DevExpress.XtraEditors.TextEdit txtMaLop;
+        public DevExpress.XtraEditors.TextEdit txtMaMH;
     }
 }
