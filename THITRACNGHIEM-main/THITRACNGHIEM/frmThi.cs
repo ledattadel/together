@@ -60,7 +60,8 @@ namespace THITRACNGHIEM
         {
             if(rdbDapAn.SelectedIndex != -1)
                 deThi[rdbCauHoi.SelectedIndex + 1].DaChon = rdbDapAn.EditValue.ToString();
-               
+            //if (!deThi[rdbCauHoi.SelectedIndex + 1].DaChon.Equals("X"))
+            rdbCauHoi.Text = rdbCauHoi.EditValue.ToString() + "-" + deThi[rdbCauHoi.SelectedIndex + 1].DaChon;
         }
 
         private void rdbCauHoi_SelectedIndexChanged(object sender, EventArgs e)
@@ -91,7 +92,7 @@ namespace THITRACNGHIEM
                     break;
             }
             
-            
+
         }
 
         public void setThoiGian()
@@ -127,6 +128,111 @@ namespace THITRACNGHIEM
                 }
             }
         }
+        //A B C D
+        //1 4 2 3
+        //A D C B
+        //A C D B
+        //A C B D
+        public void swapLuaChon(string lc, string lcCu, int indexSwap, CauHoi c)
+        {
+            string temp = "";
+            switch (indexSwap)
+            {
+                case 1: // A
+                    if (c.DapAn == lc)
+                        c.DapAn = "A";
+                    else if (c.DapAn == "A")
+
+                        c.DapAn = lc;
+                    temp = lcCu;
+                    if (c.A == lcCu)
+                        c.A = c.A; // luachon cu = lua chon moi
+                    else if (c.B == lcCu)
+                        c.B = c.A;
+                    else if (c.C == lcCu)
+                        c.C = c.A;
+                    else if (c.D == lcCu)
+                        c.D = c.A;
+                    c.A = temp;
+                    
+                    break;
+                case 2: // B
+                    if (c.DapAn == lc)
+                        c.DapAn = "B";
+                    else if (c.DapAn == "B")
+                        c.DapAn = lc;
+
+                    temp = lcCu;
+                    if (c.A == lcCu)
+                        c.A = c.B; // luachon cu = lua chon moi
+                    else if (c.B == lcCu)
+                        c.B = c.B;
+                    else if (c.C == lcCu)
+                        c.C = c.B;
+                    else if (c.D == lcCu)
+                        c.D = c.B;
+                    c.B = temp;
+                    
+                    break;
+                case 3: // C
+                    if (c.DapAn == lc)
+                        c.DapAn = "C";
+                    else if (c.DapAn == "C")
+                        c.DapAn = lc;
+
+                    temp = lcCu;
+                    if (c.A == lcCu)
+                        c.A = c.C; // luachon cu = lua chon moi
+                    else if (c.B == lcCu)
+                        c.B = c.C;
+                    else if (c.C == lcCu)
+                        c.C = c.C;
+                    else if (c.D == lcCu)
+                        c.D = c.C;
+                    c.C = temp;
+                    
+                    break;
+                case 4: // D
+                    if (c.DapAn == lc)
+                        c.DapAn = "D";
+                    else if (c.DapAn == "D")
+                        c.DapAn = lc;
+
+                    temp = lcCu;
+                    if (c.A == lcCu)
+                        c.A = c.D; // luachon cu = lua chon moi
+                    else if (c.B == lcCu)
+                        c.B = c.D;
+                    else if (c.C == lcCu)
+                        c.C = c.D;
+                    else if (c.D == lcCu)
+                        c.D = c.D;
+                    c.D = temp;
+                    break;
+            }
+        }
+
+        public void tronDapAn(CauHoi c)
+        {
+            // (1 - A, 2 - B, 3 - C, 4 - D)
+
+            Random rand = new Random();
+            List<int> randLuaChon = new List<int>();
+            int temp = 0;
+            for (int i = 1; i <= 4; i++)
+            {
+                temp = rand.Next(1, 5);
+                if (!randLuaChon.Contains(temp))
+                    randLuaChon.Add(temp);
+                else
+                    i--;
+            }
+
+            swapLuaChon("A", c.A, randLuaChon[0], c);
+            swapLuaChon("B", c.B, randLuaChon[1], c);
+            swapLuaChon("C", c.C, randLuaChon[2], c);
+            swapLuaChon("D", c.D, randLuaChon[3], c);
+        }
 
         public CauHoi LayCauHoiTuBDS(int vitri)
         {
@@ -144,6 +250,7 @@ namespace THITRACNGHIEM
             c.DapAn = ((DataRowView)bdsDethi[vitri])["DAP_AN"].ToString().Trim();
             c.DaChon = "X";
 
+            tronDapAn(c);
             return c;
         }
 
@@ -187,6 +294,18 @@ namespace THITRACNGHIEM
                     diem += diemMoiCau;
                 }
             }
+        }
+
+        public bool checkFullDA()
+        {
+            foreach (KeyValuePair<int, CauHoi> item in deThi)
+            {
+                if (item.Value.DaChon.Equals("X"))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void luuVaoBangDiem()
@@ -254,19 +373,25 @@ namespace THITRACNGHIEM
             {
                 if (MessageBox.Show("Chưa hết thời gian, bạn có chắc nộp bài không?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    tinhDiem();
-                    luuVaoBangDiem();
-                    timer.Stop();
-                    phut = 0;
-                    giay = 0;
-                    hienThiTG();
-                    updateDatagrid();
-                    lblDiem.Text = "Điểm: " + diem;
+                    if (checkFullDA())
+                        if (MessageBox.Show("Chưa chọn hết đáp án, bạn có muốn nộp bài không", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            tinhDiem();
+                            luuVaoBangDiem();
+                            timer.Stop();
+                            phut = 0;
+                            giay = 0;
+                            hienThiTG();
+                            updateDatagrid();
+                            lblDiem.Text = "Điểm: " + diem;
 
-                    btnXemKQ.Enabled = true;
-                    btnThoat.Enabled = true;
-                    btnNopBai.Enabled = false;
-                    //MessageBox.Show("Điểm của bạn: " + diem, "Điểm", MessageBoxButtons.OK);
+                            btnXemKQ.Enabled = true;
+                            btnThoat.Enabled = true;
+                            btnNopBai.Enabled = false;
+                            //MessageBox.Show("Điểm của bạn: " + diem, "Điểm", MessageBoxButtons.OK);
+                        }
+                        else
+                            return;
                 }
             }
         }
